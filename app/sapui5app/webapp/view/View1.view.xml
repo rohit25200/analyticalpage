@@ -1,0 +1,109 @@
+<mvc:View controllerName="db.sapui5app.controller.View1"
+    displayBlock="true"
+    xmlns:microchart="sap.suite.ui.microchart"
+    xmlns:unified="sap.ui.unified"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:chart="sap.suite.ui.commons"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:layout="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:vizData="sap.viz.ui5.data"
+    xmlns:vizFeeds="sap.viz.ui5.controls.common.feeds"
+    xmlns="sap.m">
+    
+    
+        <App>
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content>
+                        <viz:Popover id="idPopOver"></viz:Popover>
+                        <Panel class="panelStyle" expandable="true" expanded="true" headerText="Settings" id="settingsPanel" width="auto">
+                            <content>
+                                <HBox class="sapUiSmallMarginBegin">
+                                    <VBox class="settingsBox">
+                                        <Label design="Bold" text="{i18n>valueLabel}"></Label>
+                                        <Switch change="onDataLabelChanged" state="false">
+                                            <layoutData>
+                                                <FlexItemData growFactor="1"/>
+                                            </layoutData>
+                                        </Switch>
+                                    </VBox>
+                                    <VBox class="sapUiMediumMarginBegin">
+                                        <Label design="Bold" text="{i18n>sumValueLabel}"></Label>
+                                        <Switch change="onSumLabelChanged" state="false">
+                                            <layoutData>
+                                                <FlexItemData growFactor="1"/>
+                                            </layoutData>
+                                        </Switch>
+                                    </VBox>
+                                    <VBox class="sapUiMediumMarginBegin">
+                                        <Label design="Bold" text="{i18n>axisTitleLabel}"></Label>
+                                        <Switch change="onAxisTitleChanged" state="true">
+                                            <layoutData>
+                                                <FlexItemData growFactor="1"/>
+                                            </layoutData>
+                                        </Switch>
+                                    </VBox>
+                                    <VBox class="sapUiMediumMarginBegin">
+                                        <Label design="Bold" text="{i18n>stackedType}"></Label>
+                                        <RadioButtonGroup select="onTypeSelected">
+                                            <buttons>
+                                                <RadioButton text="{i18n>regular}"/>
+                                                <RadioButton text="{i18n>percentage}"/>
+                                            </buttons>
+                                        </RadioButtonGroup>
+                                    </VBox>
+                                    <VBox class="sapUiMediumMarginBegin">
+                                        <Label design="Bold" text="{i18n>chartType}"></Label>
+                                        <Select change="onChartTypeChanged">
+                                            <items>
+                                                <core:Item key="line" text="Line Chart" />
+                                                <core:Item key="column" text="Column Chart" />
+                                                <core:Item key="bar" text="Bar Chart" />
+                                                <core:Item key="pie" text="Pie Chart" />
+                                                <core:Item key="scatter" text="Scatter Chart" />
+                                                <core:Item key="radar" text="Radar Chart" />
+                                                <core:Item key="scatter" text="Scatter Chart" />
+                                                <core:Item key="stackedBar" text="Stacked Bar Chart" />
+                                                
+                                            </items>
+                                        </Select>
+                                    </VBox>
+                                </HBox>
+                            </content>
+                        </Panel>
+
+                        <chart:ChartContainer autoAdjustHeight="true" id="chartContainer" showFullScreen="true" title="Reports">
+                            <chart:ChartContainerContent icon="sap-icon://line" title="Stacked_bar Chart">
+                                <chart:content>
+                                    <viz:VizFrame height="" id="idVizFrame" uiConfig="{applicationSet:'fiori'}" vizType="{viewModel>/selectedChartType}">
+                                        <viz:dataset>
+                                            <vizData:FlattenedDataset data="{/BooksAnalytics}">
+                                                <vizData:dimensions>
+                                                    <vizData:DimensionDefinition name="stockName" value="{stockName}"/>
+                                                    <vizData:DimensionDefinition name="OnTheDate" value="{OnTheDate}"/>
+                                                </vizData:dimensions>
+                                                <vizData:measures>
+                                                    <vizData:MeasureDefinition name="stock" value="{stock}"/>
+                                                </vizData:measures>
+                                            </vizData:FlattenedDataset>
+                                        </viz:dataset>
+                                        <viz:feeds>
+                                            <vizFeeds:FeedItem type="Measure" uid="valueAxis" values="stock"/>
+                                            <vizFeeds:FeedItem type="Dimension" uid="categoryAxis" values="OnTheDate"/>
+                                            <vizFeeds:FeedItem type="Dimension" uid="color" values="stockName"/>
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                </chart:content>
+                            </chart:ChartContainerContent>
+                        </chart:ChartContainer>
+                    </content>
+                </Page>
+            </pages>
+        </App>
+   
+</mvc:View>
