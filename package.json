@@ -7,17 +7,20 @@
   "private": true,
   "dependencies": {
     "@sap/cds": ">=5",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
     "express": "^4"
   },
   "devDependencies": {
-    "@sap/ux-specification": "^1.108.8",
+    "@sap/ux-specification": "^1.108.11",
     "sqlite3": "^5.0.4"
   },
   "scripts": {
     "start": "cds run --port 4005",
     "watch-alp-v4": "cds watch --open alp-v4/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-ui5app": "cds watch --open ui5app/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-sapui5app": "cds watch --open sapui5app/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-sapui5app": "cds watch --open sapui5app/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-project1": "cds watch --open project1/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-material": "cds watch --open material/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
@@ -45,12 +48,18 @@
     }
   },
   "sapux": [
-    "app/alp-v4"
+    "app/alp-v4",
+    "app/project1",
+    "app/material"
   ],
   "cds": {
     "requires": {
       "db": {
         "kind": "sql"
+      },
+      "API_MATERIAL_STOCK_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_MATERIAL_STOCK_SRV"
       }
     }
   }

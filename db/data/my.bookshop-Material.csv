@@ -1,0 +1,11 @@
+datetime,material,openingstock,goodissue,goodsreceipt,closingstock
+2023-08-01 08:00:00,Material A,100,-20,0,80
+2023-08-01 09:00:00,Material A,80,-30,0,50
+2023-08-01 10:00:00,Material A,50,-25,0,25
+2023-08-01 11:00:00,Material A,25,0,100,125
+2023-08-02 08:00:00,Material A,125,-20,0,105
+2023-08-02 09:00:00,Material A,105,-40,,65
+2023-08-02 10:00:00,Material A,65,-30,0,35
+2023-08-02 11:00:00,Material A,35,0,95,130
+2023-08-03 08:00:00,Material A,130,-20,0,110
+2023-08-03 09:00:00,Material A,110,-30,0,80

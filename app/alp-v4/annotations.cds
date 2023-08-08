@@ -1,6 +1,6 @@
 using CatalogService as service from '../../srv/cat-service';
 //using from '../../srv/cat-service-annotations';
-using { CatalogService } from '../../db/data-model';
+// using { CatalogService } from '../../db/data-model';
 
 //1. Aggregation and analytical annotations
 

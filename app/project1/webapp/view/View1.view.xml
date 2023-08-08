@@ -1,0 +1,88 @@
+<!-- <mvc:View controllerName="my.bookshop.project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content />
+    </Page>
+</mvc:View> -->
+
+<mvc:View
+    controllerName="my.bookshop.project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+>
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+                <Page id="page" title="Demo" showHeader="false">
+                    <content>
+                        <ObjectHeader id="_IDGenObjectHeader1"
+                            responsive="true"
+                            icon="sap-icon://globe"
+                            title="SAP ALM DashBoard"
+                            number="{}"
+                            numberUnit="Deaths around the world"
+                            numberState="Error"
+                            class="sapUiResponsivePadding--header">
+                            <headerContainer>
+                                <IconTabBar
+                                    id="iconTabId"
+                                    selectedKey="1"
+                                    upperCase="true"
+                                    class="sapUiResponsiveContentPadding"
+                                >
+                                    <items>
+                                        <IconTabFilter id="_IDGenIconTabFilter1" key="1" icon="sap-icon://business-objects-experience" text="Graph 1">
+                                          <!-- <ComboBox
+                            id="metricFilterCombo"
+                            items="{ALMData>/}"
+                            placeholder="Filter By Metric"
+                            selectionChange="onFilterChange"
+                            
+                          
+                        >
+                        <Label id="_IDGenLabel1" text="Time Range" />
+                                        <TimePicker id="startTimePicker" value="{ALMData>/startTime}" />
+                                        <Label id="_IDGenLabel2" text="-" />
+                                        <TimePicker id="endTimePicker" value="{ALMData>/endTime}" />
+                            <core:Item id="_IDGenItem1" key="{ALMData>metric}" text="{ALMData>metric}" />
+                        </ComboBox> -->
+                                            <viz:VizFrame id="yourChartId" uiConfig="{applicationSet:'fiori'}" width="100%" vizType="line">
+                                                <viz:dataset>
+                                                    <viz.data:FlattenedDataset id="_IDGenFlattenedDataset1" data="{/Material}">
+                                                        <viz.data:dimensions>
+                                                            <viz.data:DimensionDefinition id="_IDGenDimensionDefinition1" name="MaterialName" value="{MaterialName}" />
+                                                            <viz.data:DimensionDefinition id="_IDGenDimensionDefinition2" name="datetime" value="{datetime}" />
+                                                        </viz.data:dimensions>
+                                                        <viz.data:measures>
+                                                            <viz.data:MeasureDefinition id="_IDGenMeasureDefinition1" name="closingstock" value="{closingstock}" />
+                                                        </viz.data:measures>
+                                                    </viz.data:FlattenedDataset>
+                                                </viz:dataset>
+                                                <viz:feeds>
+                                                    <viz.feeds:FeedItem id="valueAxisFeed" uid="valueAxis" type="Measure" values="closingstock" />
+                                                    <viz.feeds:FeedItem id="categoryAxisFeed" uid="categoryAxis" type="Dimension" values="datetime" />
+                                                    <viz.feeds:FeedItem id="colorFeed" uid="color" type="Dimension" values="MaterialName" />
+                                                </viz:feeds>
+                                            </viz:VizFrame>
+                                           
+                                        </IconTabFilter>
+
+                                      
+                                         
+                                    </items>
+                                </IconTabBar>
+                            </headerContainer>
+                        </ObjectHeader>
+                      
+                    </content>
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>
